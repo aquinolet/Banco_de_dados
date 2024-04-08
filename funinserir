@@ -1,0 +1,17 @@
+#Código da Função Inserir 
+
+from conexao import connect
+
+def insert(mybd,titulo,autor):
+    mycursor = mybd.cursor()
+
+    sql = "INSERT INTO livros (titulo,autor) VALUES (%s,%S)"
+    val = (titulo,autor)
+
+    mycursor.execute(sql, val)
+
+    mybd.commit()
+    
+    print(mycursor.rowcount,"Inserido com Sucesso.")
+
+    mycursor.close()
