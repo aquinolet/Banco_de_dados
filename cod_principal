@@ -1,13 +1,20 @@
 from conexao import connect
-from funinserir import insert
+from fun_deletar import deletar
+from fun_inserir import inserir
+from fun_emprestar import emprestar
+from fun_devolver import devolver
+
 
 #Conectar ao banco de dados
 mydb = connect()
 
 #Chamar função insert_customer com os valores desejados
-t = 'Game of Devops 3'
-a = 'Jhonathan Rennan'
-insert(mydb, t,a)
+t = "Como eu era antes de você"
+a = 'Jojo Moyes'
+an = '2012'
+s = 'Disponível'
+
+inserir(mydb,t,a,an,s)
 
 #Fechar a conexão com o banco de dados
 mydb.close()
