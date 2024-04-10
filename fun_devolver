@@ -1,0 +1,13 @@
+def devolver(mydb,titulo):
+    mycursor = mydb.cursor()
+
+    sql = "UPDATE livros SET Status_ = 'Disponível' WHERE Titulo = %s"
+    val = (titulo,)
+
+    mycursor.execute(sql,val)
+
+    mydb.commit()
+
+    print(mycursor.rowcount, "Livro devolvido!.")
+
+    mycursor.close()
