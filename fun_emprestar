@@ -1,0 +1,12 @@
+
+def emprestar(mydb,titulo):
+    mycursor = mydb.cursor()
+
+    sql = "UPDATE livros SET Status_ = 'Não disponível' WHERE Titulo = %s"
+    val = (titulo,)
+
+    mycursor.commit()
+
+    print(mycursor.rowcount, "Livro emprestado!.")
+
+    mycursor.close()
