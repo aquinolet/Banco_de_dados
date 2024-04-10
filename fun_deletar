@@ -1,0 +1,13 @@
+def deletar(mydb,titulo):
+    mycursor = mydb.cursor()
+
+    sql = "DELETE FROM livros WHERE Titulo = %s"
+    val = (titulo,)
+
+    mycursor.execute(sql,val)
+
+    mydb.commit()
+
+    print(mycursor.rowcount, "Deletado com sucesso!.")
+
+    mycursor.close()
