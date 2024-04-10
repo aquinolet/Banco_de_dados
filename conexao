@@ -2,10 +2,11 @@
 import mysql.connector
 
 def connect():
-    mybd = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="",
-        database="sistema_biblioteca"
+    mydb = mysql.connector.connect(
+        host = "localhost",
+        user = "root",
+        password = "",
+        database = "sistema_biblioteca_aquino"
     )
-    return mybd
+    return mydb
+
