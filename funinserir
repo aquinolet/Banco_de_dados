@@ -1,41 +1,13 @@
-from conexao import connect
-
-def insert(mybd, titulo, autor, ano_publicacao, status):
-    mycursor = mybd.cursor()
-
-    sql = "INSERT INTO livros (Titulo,Autor,Ano_publicação,Status_) VALUES ('%s','%s','%s','%s')"
-    val = (titulo,autor,ano_publicacao,status)
-
-    mycursor.execute(sql, val)
-
-    mybd.commit()
-    
-    print(mycursor.rowcount,"Inserido com Sucesso.")
-
-    mycursor.close()
-
-def atualizar(mydb, titulo, autor, ano_publicacao, status):
+def inserir(mydb,titulo,autor,ano,status):
     mycursor = mydb.cursor()
 
-    sql = "UPDATE livros SET Status_ = %s WHERE Titulo = %s"
-    val = (status, titulo)
-
-    mycursor.commit()
-
-    print(mycursor.rowcount, "Atualizado com sucesso!.")
-
-    mycursor.close()
-
-def deletar(mydb,titulo):
-    mycursor = mydb.cursor()
-
-    sql = "DELETE FROM Livros WHERE ID_Livro = %s"
-    val = (titulo)
+    sql = "INSERT INTO livros (Titulo,Autor,Ano_publicacao,Status_) VALUES (%s,%s,%s,%s)"
+    val = (titulo,autor,ano,status)
 
     mycursor.execute(sql,val)
 
     mydb.commit()
 
-    print(mycursor.rowcount, "Deletado com sucesso!.")
+    print(mycursor.rowcount, "Livro inserido com sucesso!")
 
     mycursor.close()
