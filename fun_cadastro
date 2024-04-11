@@ -1,1 +1,13 @@
+def cadastro(mydb,nome,cpf,email,senha):
+    mycursor = mydb.cursor()
 
+    sql = "INSERT INTO clientes (Nome,CPF,Email,Senha) VALUES (%s,%s,%s,%s)"
+    val = (nome,cpf,email,senha)
+
+    mycursor.execute(sql,val)
+
+    mydb.commit()
+
+    print(mycursor.rowcount, "Cliente cadastrado com sucesso!")
+
+    mycursor.close()
