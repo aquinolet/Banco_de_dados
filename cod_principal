@@ -3,18 +3,76 @@ from fun_deletar import deletar
 from fun_inserir import inserir
 from fun_emprestar import emprestar
 from fun_devolver import devolver
+from fun_listar import listar
+from fun_atualizar import atualizar_ano, atualizar_autor, atualizar_titulo
+from fun_cadastro import cadastro
+from fun_login import login
 
+def menu():
+    print('Bem - Vindo a Biblioteca Digital')
+    print('--------------------------------')
+    print('Selecione uma operação: ')
+    print('1. Cadastrar cliente')
+    print('2. Fazer login')
+    print('3. Inserir livro')
+    print('4. Listar livros')
+    print('5. Emprestar livro')
+    print('6. Devolver livro')
+    print('7. Deletar livro')
+    print('8. Atualizar livro')
+    print('9. Sair')
 
-#Conectar ao banco de dados
 mydb = connect()
 
-#Chamar função insert_customer com os valores desejados
-t = "Como eu era antes de você"
-a = 'Jojo Moyes'
-an = '2012'
-s = 'Disponível'
+while True:
+    menu()
+    o = int(input('Opção: '))
 
-inserir(mydb,t,a,an,s)
-
-#Fechar a conexão com o banco de dados
+    if o == 1:
+        n = input('Digite seu nome: ')
+        c = input('Digite seu CPF: ')
+        e = input('Digite seu e-mail: ')
+        s = input('Crie uma senha: ')
+        cadastro(n,c,e,s)
+    elif o == 2:
+        print()
+    elif o == 3:
+        t = input('Título do livro: ')
+        a = input('Autor do livro: ')
+        an = input('Ano de publicação do livro: ')
+        s = input('Insira o status atual do livro (Disponível ou Não disponível): ')
+        inserir(t,a,an,s)
+    elif o == 4:
+        print()
+    elif o == 5: 
+        t = input('Insira o livro que será emprestado: ')
+        emprestar(t)
+    elif o == 6 :
+        t = input('Insira o livro que vai ser devolvido: ')
+        devolver(t)
+    elif o == 7:
+        t = input('Insira o livro que vai ser deletado: ')
+        deletar(t)
+    elif o == 8:
+        print('Escolha o que você deseja atualizar: ')
+        print('1 - Título do livro')
+        print('2 - Autor')
+        print('3 - Ano de publicação')
+        op = int(input('Escolha uma opção: '))
+        if op ==1:
+            titulo = input('Digite o livro que vai ser atualizado: ')
+            novo = input('Digite o novo titulo do livro: ')
+            atualizar_titulo(novo,titulo)
+        elif op ==2:
+            titulo = input('Digite o livro que vai ser atualizado: ')
+            novo = input('Digite o novo autor do livro: ')
+            atualizar_autor(novo,titulo)
+        elif op ==3:
+            titulo = input('Digite o livro que vai ser atualizado: ')
+            novo = input('Digite o novo ano de publicação do livro: ')
+            atualizar_ano(novo,titulo)
+    elif o > 9:
+        print('Essa opção não existe!.')
+    elif o == 9:
+        break
 mydb.close()
