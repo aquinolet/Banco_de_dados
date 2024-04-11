@@ -1,1 +1,42 @@
 
+def atualizar_titulo(mydb,titulo,novo):
+    mycursor = mydb.cursor()
+
+    sql = "UPDATE livros SET Titulo ='%s' WHERE Titulo = %s"
+    val = (novo,titulo)
+
+    mycursor.execute(sql,val)
+
+    mydb.commit()
+
+    print(mycursor.rowcount, "Livro atualizado com sucesso!")
+
+    mycursor.close()
+
+def atualizar_ano(mydb,titulo,novo):
+    mycursor = mydb.cursor()
+
+    sql = "UPDATE livros SET Ano_publicacao ='%s' WHERE Titulo = %s"
+    val = (novo,titulo)
+
+    mycursor.execute(sql,val)
+
+    mydb.commit()
+
+    print(mycursor.rowcount, "Livro atualizado com sucesso!")
+
+    mycursor.close()
+    
+def atualizar_autor(mydb,titulo,novo):
+    mycursor = mydb.cursor()
+
+    sql = "UPDATE livros SET Autor ='%s' WHERE Titulo = %s"
+    val = (novo,titulo)
+
+    mycursor.execute(sql,val)
+
+    mydb.commit()
+
+    print(mycursor.rowcount, "Livro atualizado com sucesso!")
+
+    mycursor.close()
